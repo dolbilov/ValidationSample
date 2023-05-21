@@ -1,20 +1,44 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:ValidationSample.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="ValidationSample.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="ValidationSample">
+<Window
+    CanResize="False"
+    Height="150"
+    Icon="/Assets/avalonia-logo.ico"
+    RequestedThemeVariant="Light"
+    Title="ValidationSample"
+    Width="700"
+    WindowStartupLocation="CenterScreen"
+    d:DesignHeight="150"
+    d:DesignWidth="700"
+    mc:Ignorable="d"
+    x:Class="ValidationSample.Views.MainWindow"
+    x:DataType="vm:MainWindowViewModel"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ValidationSample.ViewModels"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Window.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="MaxHeight" Value="32" />
+            <Setter Property="Padding" Value="8" />
+        </Style>
+    </Window.Styles>
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <TabControl>
+        <TabItem Header="DataAnnotation">
+            <TextBox Text="{Binding ValidationUsingDataAnnotationViewModel.Email}" />
+        </TabItem>
 
+        <TabItem Header="Exception inside setter">
+            <TextBox Text="{Binding ValidationUsingExceptionsInsideSetters.Email}" />
+        </TabItem>
+
+        <TabItem Header="INotifyDataErrorInfo">
+            <TextBox Text="{Binding ValidationUsingINotifyDataErrorViewModel.Email}" />
+        </TabItem>
+    </TabControl>
 </Window>

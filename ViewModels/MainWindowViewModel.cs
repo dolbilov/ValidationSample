@@ -2,5 +2,9 @@
 
 public class MainWindowViewModel : ViewModelBase
 {
-    public string Greeting => "Welcome to Avalonia!";
+    public ValidationUsingDataAnnotationViewModel ValidationUsingDataAnnotationViewModel { get; } = new();
+
+    public ValidationUsingExceptionsInsideSetters ValidationUsingExceptionsInsideSetters { get; } = new();
+
+    public ValidationUsingINotifyDataErrorViewModel ValidationUsingINotifyDataErrorViewModel { get; } = new();
 }
