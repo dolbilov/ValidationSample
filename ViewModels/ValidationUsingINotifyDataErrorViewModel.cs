@@ -46,8 +46,8 @@ public class ValidationUsingINotifyDataErrorViewModel : ValidatableViewModel
     {
         try
         {
-            _ = new MailAddress(Email!).Address;
-            return true;
+            var address = new MailAddress(Email!).Address;
+            return address == Email;
         }
         catch (Exception)
         {
