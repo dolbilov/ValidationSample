@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using ReactiveUI;
 
 namespace ValidationSample.ViewModels;
 
@@ -48,6 +49,10 @@ public abstract class ValidatableViewModel : ViewModelBase, INotifyDataErrorInfo
             _validationErrors.Clear();
         else
             _validationErrors.Remove(propertyName);
+        
+        ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        this.RaisePropertyChanged(nameof(HasErrors));
+        
     }
 
     protected void AddError(string propertyName, string errorMessage)
@@ -58,6 +63,9 @@ public abstract class ValidatableViewModel : ViewModelBase, INotifyDataErrorInfo
             _validationErrors.Add(propertyName, new List<ValidationResult>());
 
         _validationErrors[propertyName].Add(new ValidationResult(errorMessage));
+        
+        ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        this.RaisePropertyChanged(nameof(HasErrors));
     }
 
     #endregion
