@@ -10,5 +10,6 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="./Styles/ValidationStyles.axaml" />
     </Application.Styles>
 </Application>
