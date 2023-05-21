@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ValidationSample.ViewModels;
 
-public abstract class ValidatableViewModel : INotifyDataErrorInfo
+public abstract class ValidatableViewModel : ViewModelBase, INotifyDataErrorInfo
 {
     #region Fields
 
