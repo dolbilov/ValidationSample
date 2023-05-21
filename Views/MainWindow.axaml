@@ -31,6 +31,10 @@
         <TabItem Header="DataAnnotation">
             <TextBox Text="{Binding ValidationUsingDataAnnotationViewModel.Email}" />
         </TabItem>
+
+        <TabItem Header="Exception inside setter">
+            <TextBox Text="{Binding ValidationUsingExceptionsInsideSetters.Email}" />
+        </TabItem>
     </TabControl>
 
 </Window>
