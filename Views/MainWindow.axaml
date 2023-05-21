@@ -16,10 +16,7 @@
     <Window.Styles>
         <Style Selector="TextBox">
             <Setter Property="MaxHeight" Value="32" />
-        </Style>
-
-        <Style Selector="TabItem">
-            <Setter Property="VerticalContentAlignment" Value="Top" />
+            <Setter Property="Padding" Value="8" />
         </Style>
     </Window.Styles>
 
@@ -35,6 +32,9 @@
         <TabItem Header="Exception inside setter">
             <TextBox Text="{Binding ValidationUsingExceptionsInsideSetters.Email}" />
         </TabItem>
-    </TabControl>
 
+        <TabItem Header="INotifyDataErrorInfo">
+            <TextBox Text="{Binding ValidationUsingINotifyDataErrorViewModel.Email}" />
+        </TabItem>
+    </TabControl>
 </Window>
